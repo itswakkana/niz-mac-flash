@@ -1,0 +1,4 @@
+shim/*.dylib
+tools/read-version
+*.bin
+*.dmg
