@@ -62,6 +62,13 @@ DYLD_INSERT_LIBRARIES="$PWD/shim/shim.dylib" \
 工具收不到/读不掉回复时，键盘会拒收后续写入，只能**拔插一次 USB** 恢复。
 另外别在工具运行期间拔插——它检测到设备会立刻发一次版本查询，又把设备堵上（此时先退出工具，再拔插）。
 
+## 测试环境
+
+- macOS 27.2（26B123），Apple M6，Rosetta 2
+- 官方工具 2019 年版（x86_64），按上文流程重新签名后运行
+
+其他 macOS 版本、Intel Mac、其他键盘型号未测试。
+
 ## 已测试设备
 
 | 型号 | VID:PID | 硬件版本 | 原固件 | 刷入固件 | 结果 |
@@ -79,7 +86,7 @@ DYLD_INSERT_LIBRARIES="$PWD/shim/shim.dylib" \
 
 ## 固件版本选择
 
-- `mini84ECS_V2.2.1` — 2023 年 mini84 EC-S PRO / AW2 硬件，本项目实际使用
+- `mini84ECS_V2.2.1` — 2023 年 mini84 EC-S PRO / AW2 硬件，实测使用
 - `mini84ECS_V2.2.4`（2025.4）— 属于 I84ALU / Mini84 v6 新硬件，**不要**刷到 AW2 上
 
 刷错机型固件可能变砖，刷之前先记下自己的型号和当前固件版本（用 `tools/read-version`）。
@@ -94,3 +101,8 @@ DYLD_INSERT_LIBRARIES="$PWD/shim/shim.dylib" \
 
 - 本仓库不包含官方固件与工具本体
 - 刷固件有风险，后果自负
+- 许可证：MIT，见 [LICENSE](LICENSE)
+
+## 参考
+
+- [DESIGN.md](DESIGN.md)：文件组成、shim 拦截的符号、刷写流程、能做什么 / 不能做什么
